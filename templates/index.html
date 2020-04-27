@@ -1,0 +1,28 @@
+<title>Scheduler</title>
+
+Signed in as {{email}}<br>
+<a href="/signout">Sign Out</a><br>
+<a href="/revoke">Revoke Permission</a><br>
+<form>
+  <label>
+    You want the event in
+    <input type="number" step="any" min=0 name="period" value="{{period}}">
+    days
+  </label><br>
+  <label>
+    The event will last
+    <input type="number" step="any" min=0 name="duration" value="{{duration}}">
+    hours
+  </label><br>
+  <label>
+    You want to invite
+    <input type="email" name="participants" multiple value="{{participants}}">
+    to the event
+  </label><br>
+  <input type="submit" value="find time">
+</form>
+
+Available time intervals: <br>
+{% for interval in intervals %}
+  {{interval[0].strftime("%c")}} &rarr; {{interval[1].strftime("%c")}}<br>
+{% endfor %}
